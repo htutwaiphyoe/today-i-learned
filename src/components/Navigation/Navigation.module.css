@@ -1,0 +1,44 @@
+.Navigation {
+    width: 100%;
+    height: 9rem;
+    position: sticky;
+    font-family: "Fredoka One", cursive;
+}
+.Navigation ul {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+}
+.Navigation ul li {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Navigation img {
+    width: 5.5rem;
+}
+.Navigation span {
+    margin-left: 1rem;
+}
+.SignIn {
+    border: 1px solid #6a41ff;
+    color: #6a41ff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    cursor: pointer;
+}
+@media only screen and (max-width: 992px) {
+    .Navigation ul {
+        width: 90%;
+    }
+}
