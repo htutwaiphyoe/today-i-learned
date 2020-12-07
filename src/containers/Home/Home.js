@@ -5,7 +5,7 @@ const Home = (props) => {
     return (
         <header className={classes.Home}>
             <div className={classes.HomeText}>
-                <h1>Track budgets flow</h1>
+                <h1>Track budgets simply</h1>
                 <p>
                     Let's help you effortlessly manage your personal finances in one place beacuse
                     money matters.

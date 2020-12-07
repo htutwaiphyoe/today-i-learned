@@ -1,0 +1,188 @@
+.Dashboard {
+    width: 100%;
+    height: calc(100vh - 9rem);
+    display: grid;
+    grid-template-columns: 27rem 1fr;
+}
+.Dashboard .Panel {
+    padding: 0 1rem 1rem;
+}
+.Dashboard .Content {
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+}
+.Profile {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.ProfileImage {
+    overflow: hidden;
+    width: 4.2rem;
+}
+.ProfileImage img {
+    width: 100%;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+.ProfileText {
+    padding: 2rem 1rem;
+}
+.ProfileText span {
+    color: #777;
+    font-size: 1.2rem;
+}
+.ListBox {
+    padding: 0 3rem;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.ListBox footer {
+    text-align: center;
+    font-size: 1.3rem;
+}
+.ListBox footer a {
+    text-decoration: none;
+    color: #6a41ff;
+}
+
+.ListItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+.active {
+    color: #6a41ff;
+}
+.ListItem ion-icon {
+    font-size: 2.5rem;
+}
+.ListItem span {
+    font-size: 1.6rem;
+}
+
+/*** Content ***/
+.Content h1 {
+    font-size: 2rem;
+    width: 100%;
+    padding: 2rem 2rem 0;
+    color: #111;
+    display: flex;
+    align-items: center;
+}
+.Content h1 ion-icon {
+    font-size: 3rem;
+    color: #111;
+    margin-right: 1rem;
+}
+.Status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+}
+.StatusBox {
+    padding: 1.5rem 2.5rem;
+
+    width: 100%;
+    color: #f7f7f7;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    box-shadow: 0 0.15rem 0.5rem 0 rgba(58, 59, 69, 0.2);
+}
+.StatusBox:not(:first-child) {
+    margin-left: 2rem;
+}
+.StatusBox h2 {
+    font-size: 2rem;
+}
+.StatusBox:nth-child(1) {
+    background: #56ab2f;
+    background: -webkit-linear-gradient(to left, #93e035, #56ab2f);
+    background: linear-gradient(to left, #93e035, #56ab2f);
+}
+.StatusBox:nth-child(2) {
+    background: #e43a15;
+    background: -webkit-linear-gradient(to left, #e65245, #e43a15);
+    background: linear-gradient(to left, #db6459, #e04523);
+}
+.StatusBox:nth-child(3) {
+    background: #673ab7;
+    background: -webkit-linear-gradient(to right, #6c3ddb, #7a5ab3);
+    background: linear-gradient(to right, #764ed3, #8168ac);
+}
+.StatusBox h3 {
+    font-size: 1.6rem;
+}
+
+/** Table **/
+
+.TableBox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+table {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0.15rem 0.5rem 0 rgba(58, 59, 69, 0.2);
+
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    text-align: left;
+}
+
+tbody {
+    display: block;
+    max-height: 32rem;
+    overflow-y: scroll;
+}
+
+thead,
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+thead {
+    font-size: 1.8rem;
+}
+
+caption {
+    text-align: left;
+    font-size: 2rem;
+    font-family: "Fredoka One", cursive;
+    margin-bottom: 1rem;
+}
+th {
+    padding: 0.5rem;
+}
+td {
+    padding: 0.5rem 1.2rem;
+}
+.light {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.No {
+    width: 5rem;
+}

@@ -1,16 +1,24 @@
 import classes from "./Navigation.module.css";
 import logo from "../../assets/imgs/logo11.png";
+import GoogleOAuth from "../../containers/GoogleOAuth/GoogleOAuth";
+import { useSelector } from "react-redux";
 
 const Navigation = (props) => {
+    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
     return (
-        <nav className={classes.Navigation}>
-            <ul>
+        <nav className={classes.Navigation} style={{ height: isSignedIn ? "7rem" : "9rem" }}>
+            <ul style={{ width: isSignedIn ? "90%" : "80%" }}>
                 <li>
                     <img src={logo} alt="Financy" />
                     <span>Financy</span>
                 </li>
-
-                <li className={classes.SignIn}>Home</li>
+                {isSignedIn === false ? (
+                    <li>Home</li>
+                ) : (
+                    <li className={classes.SignIn}>
+                        <GoogleOAuth>Logout</GoogleOAuth>
+                    </li>
+                )}
             </ul>
         </nav>
     );

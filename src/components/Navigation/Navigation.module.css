@@ -1,6 +1,6 @@
 .Navigation {
     width: 100%;
-    height: 9rem;
+
     position: sticky;
     font-family: "Fredoka One", cursive;
 }
@@ -26,9 +26,12 @@
 .Navigation span {
     margin-left: 1rem;
 }
-/* .SignIn {
+.SignIn button {
     border: 1px solid #6a41ff;
     color: #6a41ff;
+    background: #fff;
+    font-size: 2rem;
+    font-family: "Fredoka One", cursive;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
     -webkit-border-radius: 0.5rem;
@@ -36,7 +39,8 @@
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
     cursor: pointer;
-} */
+    outline: none;
+}
 @media only screen and (max-width: 992px) {
     .Navigation ul {
         width: 90%;
