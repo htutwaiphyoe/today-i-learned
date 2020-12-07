@@ -1,5 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import { clientId } from "../../utils/utils";
 import * as actionCreators from "../../store/actions";
 let auth = null;
@@ -44,9 +46,10 @@ const GoogleOAuth = (props) => {
             auth.signOut();
         } else {
             auth.signIn();
+            props.history.replace("/");
         }
     };
     return <button onClick={onClickHandler}>{props.children}</button>;
 };
 
-export default GoogleOAuth;
+export default withRouter(GoogleOAuth);

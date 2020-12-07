@@ -12,7 +12,7 @@ const Navigation = (props) => {
                     <img src={logo} alt="Financy" />
                     <span>Financy</span>
                 </li>
-                {isSignedIn === false ? (
+                {!isSignedIn ? (
                     <li>Home</li>
                 ) : (
                     <li className={classes.SignIn}>
