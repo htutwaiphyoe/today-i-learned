@@ -1,5 +1,6 @@
 import img from "../../assets/illustration/undraw_wallet_aym5.svg";
 import classes from "./Home.module.css";
+import GoogleOAuth from "../GoogleOAuth/GoogleOAuth";
 const Home = (props) => {
     return (
         <header className={classes.Home}>
@@ -9,7 +10,7 @@ const Home = (props) => {
                     Let's help you effortlessly manage your personal finances in one place beacuse
                     money matters.
                 </p>
-                <button>Sign in free</button>
+                <GoogleOAuth>Sign in free</GoogleOAuth>
             </div>
             <figure className={classes.HomeImg}>
                 <img src={img} alt="Hero Illustration" />

@@ -1,5 +1,6 @@
 import classes from "./Navigation.module.css";
 import logo from "../../assets/imgs/logo11.png";
+
 const Navigation = (props) => {
     return (
         <nav className={classes.Navigation}>
@@ -9,7 +10,7 @@ const Navigation = (props) => {
                     <span>Financy</span>
                 </li>
 
-                <li className={classes.SignIn}>Sign in</li>
+                <li className={classes.SignIn}>Home</li>
             </ul>
         </nav>
     );
