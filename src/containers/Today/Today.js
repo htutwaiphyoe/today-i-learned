@@ -5,25 +5,6 @@ import classes from "./Today.module.css";
 import Dashboard from "../Dashboard/Dashboard";
 import * as actionCreators from "../../store/actions";
 
-const formatNumber = (amount) => {
-    return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
-};
-const getTableRow = (items) => {
-    return items.map((item, i) => {
-        let cssClasses = [];
-        if (i % 2 !== 0) {
-            cssClasses.push(classes.light);
-        }
-        return (
-            <tr key={item.id} className={cssClasses.join(" ")}>
-                <td className={classes.No}>{i + 1}.</td>
-                <td>{item.info}</td>
-                <td>$ {formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
-            </tr>
-        );
-    });
-};
-
 const Today = (props) => {
     const user = useSelector((state) => state.auth.user);
     const income = useSelector((state) => state.dashboard.income);
@@ -38,14 +19,43 @@ const Today = (props) => {
             dispatch(actionCreators.getData(user.email));
         }
     }, [dispatch, income, expense, user]);
+    const formatNumber = (amount) => {
+        return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
+    };
+    const deleteRowHandler = (type, id) => {
+        if (id) {
+            dispatch(actionCreators.deleteItem(id, type));
+        }
+    };
+    const getTableRow = (items, type) => {
+        return items.map((item, i) => {
+            let cssClasses = [];
+            if (i % 2 !== 0) {
+                cssClasses.push(classes.light);
+            }
+            return (
+                <tr key={item.id} className={cssClasses.join(" ")}>
+                    <td className={classes.No}>{i + 1}.</td>
+                    <td>{item.info}</td>
+                    <td>$ {formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
+                    <td className={classes.No} onClick={() => deleteRowHandler(type, item.id)}>
+                        <ion-icon
+                            name="close-circle"
+                            style={{ fontSize: "2rem", cursor: "pointer" }}
+                        ></ion-icon>
+                    </td>
+                </tr>
+            );
+        });
+    };
 
     let incomeData = <p>No income for today</p>;
     let expenseData = <p>No expense for today</p>;
     if (income && income.length > 0) {
-        incomeData = getTableRow(income);
+        incomeData = getTableRow(income, "income");
     }
     if (expense && expense.length > 0) {
-        expenseData = getTableRow(expense);
+        expenseData = getTableRow(expense, "expense");
     }
     return (
         <Dashboard>
@@ -78,6 +88,7 @@ const Today = (props) => {
                                 <th className={classes.No}>No.</th>
                                 <th>Inforamtion</th>
                                 <th>Amount</th>
+                                <th className={classes.No}></th>
                             </tr>
                         </thead>
                         <tbody>{incomeData}</tbody>
@@ -89,6 +100,7 @@ const Today = (props) => {
                                 <th className={classes.No}>No.</th>
                                 <th>Inforamtion</th>
                                 <th>Amount</th>
+                                <th className={classes.No}></th>
                             </tr>
                         </thead>
                         <tbody>{expenseData}</tbody>

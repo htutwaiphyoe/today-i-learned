@@ -22,6 +22,15 @@ export const clearData = () => {
         type: actionTypes.CLEAR_DATA,
     };
 };
+
+export const deleteItem = (type, id) => async (dispatch) => {
+    try {
+        await financy.delete(`/${type}/${id}.json`);
+        dispatch({ type: actionTypes.DELETE_ITEM, payload: { type, id } });
+    } catch (err) {
+        console.log(err);
+    }
+};
 export const getData = (email) => async (dispatch) => {
     try {
         dispatch(request(true));

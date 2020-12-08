@@ -126,3 +126,7 @@ td {
 .No {
     width: 5rem;
 }
+.delete {
+    font-size: 2.2rem !important;
+    cursor: pointer !important;
+}
