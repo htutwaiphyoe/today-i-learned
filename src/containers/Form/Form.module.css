@@ -11,6 +11,11 @@
     margin: 0 auto;
     background-color: #fff;
     box-shadow: 0 0.2rem 0.8rem 0 rgba(58, 59, 69, 0.2);
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
 }
 .Form form h1 {
     font-size: 2.5rem;

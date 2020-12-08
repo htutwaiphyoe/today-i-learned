@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import classes from "./Today.module.css";
 import Dashboard from "../Dashboard/Dashboard";
 import * as actionCreators from "../../store/actions";
-
+import Loader from "../../components/UI/Loader/Loader";
 const Today = (props) => {
     const user = useSelector((state) => state.auth.user);
     const income = useSelector((state) => state.dashboard.income);
     const expense = useSelector((state) => state.dashboard.expense);
     const totIncome = useSelector((state) => state.dashboard.totincome);
     const totExpense = useSelector((state) => state.dashboard.totexpense);
+    const isRequested = useSelector((state) => state.ui.isRequested);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -22,9 +23,9 @@ const Today = (props) => {
     const formatNumber = (amount) => {
         return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
     };
-    const deleteRowHandler = (type, id) => {
+    const deleteRowHandler = (type, id, amount) => {
         if (id) {
-            dispatch(actionCreators.deleteItem(id, type));
+            dispatch(actionCreators.deleteItem(type, id, amount));
         }
     };
     const getTableRow = (items, type) => {
@@ -38,11 +39,11 @@ const Today = (props) => {
                     <td className={classes.No}>{i + 1}.</td>
                     <td>{item.info}</td>
                     <td>$ {formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
-                    <td className={classes.No} onClick={() => deleteRowHandler(type, item.id)}>
-                        <ion-icon
-                            name="close-circle"
-                            style={{ fontSize: "2rem", cursor: "pointer" }}
-                        ></ion-icon>
+                    <td
+                        className={classes.No}
+                        onClick={() => deleteRowHandler(type, item.id, item.amount)}
+                    >
+                        <ion-icon name="close-circle"></ion-icon>
                     </td>
                 </tr>
             );
@@ -91,7 +92,7 @@ const Today = (props) => {
                                 <th className={classes.No}></th>
                             </tr>
                         </thead>
-                        <tbody>{incomeData}</tbody>
+                        <tbody>{isRequested ? <Loader /> : incomeData}</tbody>
                     </table>
                     <table>
                         <caption>Expense</caption>
@@ -103,7 +104,7 @@ const Today = (props) => {
                                 <th className={classes.No}></th>
                             </tr>
                         </thead>
-                        <tbody>{expenseData}</tbody>
+                        <tbody>{isRequested ? <Loader /> : expenseData}</tbody>
                     </table>
                 </div>
             </article>

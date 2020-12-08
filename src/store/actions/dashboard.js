@@ -23,10 +23,12 @@ export const clearData = () => {
     };
 };
 
-export const deleteItem = (type, id) => async (dispatch) => {
+export const deleteItem = (type, id, amount) => async (dispatch) => {
     try {
+        dispatch(request(true));
         await financy.delete(`/${type}/${id}.json`);
-        dispatch({ type: actionTypes.DELETE_ITEM, payload: { type, id } });
+        dispatch({ type: actionTypes.DELETE_ITEM, payload: { type, id, amount } });
+        dispatch(request(false));
     } catch (err) {
         console.log(err);
     }
@@ -37,7 +39,6 @@ export const getData = (email) => async (dispatch) => {
         const incomeRequest = financy.get(`/income.json?orderBy="email"&equalTo="${email}"`);
         const expenseRequest = financy.get(`/expense.json?orderBy="email"&equalTo="${email}"`);
         const response = await Promise.all([incomeRequest, expenseRequest]);
-        console.log(response);
         dispatch(
             storeData({
                 income: transformData(response[0].data),

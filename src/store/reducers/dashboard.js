@@ -43,6 +43,14 @@ const clearData = () => {
         totexpense: 0,
     };
 };
+const deleteItem = (state, action) => {
+    console.log(action);
+    const updatedData = [...state[action.payload.type]];
+    return updateObj(state, {
+        [action.payload.type]: updatedData.filter((item) => item.id !== action.payload.id),
+        [`tot${action.payload.type}`]: state[`tot${action.payload.type}`] - action.payload.amount,
+    });
+};
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.STORE_DATA:
@@ -51,6 +59,8 @@ const reducer = (state = initialState, action) => {
             return addNewItem(state, action);
         case actionTypes.CLEAR_DATA:
             return clearData();
+        case actionTypes.DELETE_ITEM:
+            return deleteItem(state, action);
         default:
             return state;
     }
