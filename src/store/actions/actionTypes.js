@@ -11,3 +11,4 @@ export const REQUEST = "REQUEST";
 
 export const STORE_DATA = "STORE_DATA";
 export const NEW_ITEM = "NEW_ITEM";
+export const CLEAR_DATA = "CLEAR_DATA";

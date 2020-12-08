@@ -1,6 +1,7 @@
 .Form {
     width: 100%;
     padding: 3rem;
+    background-color: #f1f1f1;
 }
 .Form form {
     display: flex;

@@ -17,13 +17,18 @@ const transformData = (payload) => {
     }
     return data;
 };
-export const getData = () => async (dispatch) => {
+export const clearData = () => {
+    return {
+        type: actionTypes.CLEAR_DATA,
+    };
+};
+export const getData = (email) => async (dispatch) => {
     try {
         dispatch(request(true));
-        const incomeRequest = financy.get("/income.json");
-        const expenseRequest = financy.get("/expense.json");
+        const incomeRequest = financy.get(`/income.json?orderBy="email"&equalTo="${email}"`);
+        const expenseRequest = financy.get(`/expense.json?orderBy="email"&equalTo="${email}"`);
         const response = await Promise.all([incomeRequest, expenseRequest]);
-
+        console.log(response);
         dispatch(
             storeData({
                 income: transformData(response[0].data),

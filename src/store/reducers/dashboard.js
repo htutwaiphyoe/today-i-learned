@@ -34,12 +34,23 @@ const storeData = (state, action) => {
         totexpense: calculateTotal(action.payload.expense),
     });
 };
+
+const clearData = () => {
+    return {
+        income: null,
+        expense: null,
+        totincome: 0,
+        totexpense: 0,
+    };
+};
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.STORE_DATA:
             return storeData(state, action);
         case actionTypes.NEW_ITEM:
             return addNewItem(state, action);
+        case actionTypes.CLEAR_DATA:
+            return clearData();
         default:
             return state;
     }

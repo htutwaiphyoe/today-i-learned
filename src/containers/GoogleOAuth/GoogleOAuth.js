@@ -21,6 +21,7 @@ const GoogleOAuth = (props) => {
                 );
             } else {
                 dispatch(actionCreators.signOut());
+                dispatch(actionCreators.clearData());
             }
         },
         [dispatch]

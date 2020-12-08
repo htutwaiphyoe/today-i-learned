@@ -18,13 +18,14 @@ const getTableRow = (items) => {
             <tr key={item.id} className={cssClasses.join(" ")}>
                 <td className={classes.No}>{i + 1}.</td>
                 <td>{item.info}</td>
-                <td>${formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
+                <td>$ {formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
             </tr>
         );
     });
 };
 
 const Today = (props) => {
+    const user = useSelector((state) => state.auth.user);
     const income = useSelector((state) => state.dashboard.income);
     const expense = useSelector((state) => state.dashboard.expense);
     const totIncome = useSelector((state) => state.dashboard.totincome);
@@ -32,13 +33,14 @@ const Today = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (income === null && expense === null) {
-            dispatch(actionCreators.getData());
+        if (income === null && expense === null && user) {
+            console.log(user);
+            dispatch(actionCreators.getData(user.email));
         }
-    }, [dispatch, income, expense]);
+    }, [dispatch, income, expense, user]);
 
-    let incomeData = <span>No income for today</span>;
-    let expenseData = <span>No expense for today</span>;
+    let incomeData = <p>No income for today</p>;
+    let expenseData = <p>No expense for today</p>;
     if (income && income.length > 0) {
         incomeData = getTableRow(income);
     }
@@ -55,16 +57,16 @@ const Today = (props) => {
                 <div className={classes.Status}>
                     <div className={classes.StatusBox}>
                         <h2>Income</h2>
-                        <h3>${formatNumber(Number.parseFloat(totIncome).toFixed(2))}</h3>
+                        <h3>$ {formatNumber(Number.parseFloat(totIncome).toFixed(2))}</h3>
                     </div>
                     <div className={classes.StatusBox}>
                         <h2>Expense</h2>
-                        <h3>${formatNumber(Number.parseFloat(totExpense).toFixed(2))}</h3>
+                        <h3>$ {formatNumber(Number.parseFloat(totExpense).toFixed(2))}</h3>
                     </div>
                     <div className={classes.StatusBox}>
                         <h2>Networth</h2>
                         <h3>
-                            ${formatNumber(Number.parseFloat(totIncome - totExpense).toFixed(2))}
+                            $ {formatNumber(Number.parseFloat(totIncome - totExpense).toFixed(2))}
                         </h3>
                     </div>
                 </div>

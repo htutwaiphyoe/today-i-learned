@@ -6,6 +6,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import * as actionCreators from "../../store/actions";
 const Form = (props) => {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
     const isRequested = useSelector((state) => state.ui.isRequested);
     const [info, setInfo] = useState("");
     const [amount, setAmount] = useState("");
@@ -25,7 +26,8 @@ const Form = (props) => {
         if (info.trim()) {
             setInfo("");
             setAmount("");
-            dispatch(actionCreators.addNewItem(type, { info, amount }));
+            setType("income");
+            dispatch(actionCreators.addNewItem(type, { info, amount, email: user.email }));
         }
     };
     return (
