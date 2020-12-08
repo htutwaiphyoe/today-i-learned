@@ -1,7 +1,50 @@
-import classes from "./Today.module.css";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import classes from "./Today.module.css";
 import Dashboard from "../Dashboard/Dashboard";
+import * as actionCreators from "../../store/actions";
+
+const formatNumber = (amount) => {
+    return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
+};
+const getTableRow = (items) => {
+    return items.map((item, i) => {
+        let cssClasses = [];
+        if (i % 2 !== 0) {
+            cssClasses.push(classes.light);
+        }
+        return (
+            <tr key={item.id} className={cssClasses.join(" ")}>
+                <td className={classes.No}>{i + 1}.</td>
+                <td>{item.info}</td>
+                <td>${formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
+            </tr>
+        );
+    });
+};
+
 const Today = (props) => {
+    const income = useSelector((state) => state.dashboard.income);
+    const expense = useSelector((state) => state.dashboard.expense);
+    const totIncome = useSelector((state) => state.dashboard.totincome);
+    const totExpense = useSelector((state) => state.dashboard.totexpense);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (income === null && expense === null) {
+            dispatch(actionCreators.getData());
+        }
+    }, [dispatch, income, expense]);
+
+    let incomeData = <span>No income for today</span>;
+    let expenseData = <span>No expense for today</span>;
+    if (income && income.length > 0) {
+        incomeData = getTableRow(income);
+    }
+    if (expense && expense.length > 0) {
+        expenseData = getTableRow(expense);
+    }
     return (
         <Dashboard>
             <article className={classes.Today}>
@@ -12,15 +55,17 @@ const Today = (props) => {
                 <div className={classes.Status}>
                     <div className={classes.StatusBox}>
                         <h2>Income</h2>
-                        <h3>$30000</h3>
+                        <h3>${formatNumber(Number.parseFloat(totIncome).toFixed(2))}</h3>
                     </div>
                     <div className={classes.StatusBox}>
                         <h2>Expense</h2>
-                        <h3>$30000</h3>
+                        <h3>${formatNumber(Number.parseFloat(totExpense).toFixed(2))}</h3>
                     </div>
                     <div className={classes.StatusBox}>
                         <h2>Networth</h2>
-                        <h3>$30000</h3>
+                        <h3>
+                            ${formatNumber(Number.parseFloat(totIncome - totExpense).toFixed(2))}
+                        </h3>
                     </div>
                 </div>
                 <div className={classes.TableBox}>
@@ -33,18 +78,7 @@ const Today = (props) => {
                                 <th>Amount</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td className={classes.No}>1.</td>
-                                <td>Salary</td>
-                                <td>$4000</td>
-                            </tr>
-                            <tr className={classes.light}>
-                                <td className={classes.No}>1.</td>
-                                <td>Salary</td>
-                                <td>$4000</td>
-                            </tr>
-                        </tbody>
+                        <tbody>{incomeData}</tbody>
                     </table>
                     <table>
                         <caption>Expense</caption>
@@ -55,18 +89,7 @@ const Today = (props) => {
                                 <th>Amount</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td className={classes.No}>1.</td>
-                                <td>Salary</td>
-                                <td>$4000</td>
-                            </tr>
-                            <tr className={classes.light}>
-                                <td className={classes.No}>1.</td>
-                                <td>Salary</td>
-                                <td>$4000</td>
-                            </tr>
-                        </tbody>
+                        <tbody>{expenseData}</tbody>
                     </table>
                 </div>
             </article>
