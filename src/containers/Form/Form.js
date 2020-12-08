@@ -27,7 +27,14 @@ const Form = (props) => {
             setInfo("");
             setAmount("");
             setType("income");
-            dispatch(actionCreators.addNewItem(type, { info, amount, email: user.email }));
+            dispatch(
+                actionCreators.addNewItem(type, {
+                    info,
+                    amount,
+                    email: user.email,
+                    date: new Date().toLocaleDateString(),
+                })
+            );
         }
     };
     return (

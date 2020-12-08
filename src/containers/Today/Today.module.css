@@ -18,6 +18,7 @@
     color: #111;
     margin-right: 1rem;
 }
+/** Status **/
 .Status {
     display: flex;
     justify-content: center;
