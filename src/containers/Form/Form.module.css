@@ -50,3 +50,8 @@ select {
 .Form .disable {
     cursor: not-allowed;
 }
+
+/** Select **/
+.DateBox select:not(:first-child) {
+    margin-left: 0.5rem;
+}

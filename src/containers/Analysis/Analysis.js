@@ -30,20 +30,17 @@ const Analysis = (props) => {
         }
         return elements;
     };
+    useEffect(() => {
+        if (user) dispatch(actionCreators.getData(`${user.email}-${month}/${day}/${year}`));
+    }, [dispatch, user, day, month, year]);
     const dayChangeHandler = (e) => {
         setDay(e.target.value);
-        let date = `${month}/${e.target.value}/${year}`;
-        dispatch(actionCreators.getData(user.email, date));
     };
     const monthChangeHandler = (e) => {
         setMonth(e.target.value);
-        let date = `${e.target.value}/${day}/${year}`;
-        dispatch(actionCreators.getData(user.email, date));
     };
     const yearChangeHandler = (e) => {
         setYear(e.target.value);
-        let date = `${month}/${day}/${e.target.value}`;
-        dispatch(actionCreators.getData(user.email, date));
     };
 
     const formatNumber = (amount) => {
@@ -95,7 +92,7 @@ const Analysis = (props) => {
                         {getDropDown(12)}
                     </select>
                     <select onChange={yearChangeHandler} value={year}>
-                        {getDropDown(10, 2010)}
+                        {getDropDown(10, new Date().getFullYear() - 10)}
                     </select>
                 </div>
                 <div className={classes.Status}>

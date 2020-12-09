@@ -4,13 +4,18 @@ import { useSelector, useDispatch } from "react-redux";
 import classes from "./Form.module.css";
 import Dashboard from "../Dashboard/Dashboard";
 import * as actionCreators from "../../store/actions";
+import { getDropDown } from "../../utils/utils";
 const Form = (props) => {
+    const date = new Date();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
     const isRequested = useSelector((state) => state.ui.isRequested);
     const [info, setInfo] = useState("");
     const [amount, setAmount] = useState("");
     const [type, setType] = useState("income");
+    const [day, setDay] = useState(date.getDate());
+    const [month, setMonth] = useState(date.getMonth() + 1);
+    const [year, setYear] = useState(date.getFullYear());
 
     const onChangeInfoHandler = (e) => {
         setInfo(e.target.value);
@@ -20,6 +25,15 @@ const Form = (props) => {
     };
     const onChangeTypeHandler = (e) => {
         setType(e.target.value);
+    };
+    const dayChangeHandler = (e) => {
+        setDay(e.target.value);
+    };
+    const monthChangeHandler = (e) => {
+        setMonth(e.target.value);
+    };
+    const yearChangeHandler = (e) => {
+        setYear(e.target.value);
     };
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -31,9 +45,7 @@ const Form = (props) => {
                 actionCreators.addNewItem(type, {
                     info,
                     amount,
-                    email: user.email,
-                    date: user.email + "-" + new Date().toLocaleDateString(),
-
+                    createdAt: `${user.email}-${month}/${day}/${year}`,
                 })
             );
         }
@@ -71,6 +83,20 @@ const Form = (props) => {
                             <option value="income">Income</option>
                             <option value="expense">Expense</option>
                         </select>
+                    </div>
+                    <div className={classes.FormElement}>
+                        <label>Select date...</label>
+                        <div className={classes.DateBox}>
+                            <select onChange={dayChangeHandler} value={day}>
+                                {getDropDown(31)}
+                            </select>
+                            <select onChange={monthChangeHandler} value={month}>
+                                {getDropDown(12)}
+                            </select>
+                            <select onChange={yearChangeHandler} value={year}>
+                                {getDropDown(10, 2010)}
+                            </select>
+                        </div>
                     </div>
                     {isRequested ? (
                         <button className={`${classes.button} ${classes.disable}`} disabled>

@@ -15,11 +15,10 @@ const Today = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (income === null && expense === null && user) {
-            console.log(user);
-            dispatch(actionCreators.getData(user.email));
+        if (user) {
+            dispatch(actionCreators.getData(`${user.email}-${new Date().toLocaleDateString()}`));
         }
-    }, [dispatch, income, expense, user]);
+    }, [dispatch, user]);
     const formatNumber = (amount) => {
         return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
     };

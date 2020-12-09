@@ -33,15 +33,10 @@ export const deleteItem = (type, id, amount) => async (dispatch) => {
         console.log(err);
     }
 };
-export const getData = (email, date) => async (dispatch) => {
+export const getData = (query) => async (dispatch) => {
     try {
-        let orderBy = "email";
-        let equalTo = email;
-        if (date) {
-            orderBy = "date";
-            equalTo = email + "-" + date;
-        }
-        console.log(equalTo);
+        const orderBy = "createdAt";
+        const equalTo = query;
         dispatch(request(true));
         const incomeRequest = financy.get(`/income.json?orderBy="${orderBy}"&equalTo="${equalTo}"`);
         const expenseRequest = financy.get(

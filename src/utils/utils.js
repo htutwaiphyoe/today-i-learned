@@ -8,3 +8,15 @@ export const updateObj = (oldObj, newObj) => {
         ...newObj,
     };
 };
+
+export const getDropDown = (length, startPoint = 0) => {
+    let elements = [];
+    for (let i = 1; i <= length; i++) {
+        elements.push(
+            <option value={i + startPoint} key={i}>
+                {i + startPoint}
+            </option>
+        );
+    }
+    return elements;
+};
