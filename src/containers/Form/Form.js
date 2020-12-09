@@ -16,7 +16,6 @@ const Form = (props) => {
     const [day, setDay] = useState(date.getDate());
     const [month, setMonth] = useState(date.getMonth() + 1);
     const [year, setYear] = useState(date.getFullYear());
-
     const onChangeHandler = (e, setData) => {
         setData(e.target.value);
     };

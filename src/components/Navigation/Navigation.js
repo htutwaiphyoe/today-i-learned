@@ -5,8 +5,21 @@ import { useSelector } from "react-redux";
 
 const Navigation = (props) => {
     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+    const sidebar = useSelector((state) => state.ui.sidebar);
+    let style = {
+        transform: "translateX(0px)",
+        overflow: "scroll",
+        height: isSignedIn ? "7rem" : "9rem",
+    };
+    if (sidebar) {
+        style = {
+            transform: "translateX(-300px)",
+            overflow: "hidden",
+            height: isSignedIn ? "7rem" : "9rem",
+        };
+    }
     return (
-        <nav className={classes.Navigation} style={{ height: isSignedIn ? "7rem" : "9rem" }}>
+        <nav className={classes.Navigation} style={style}>
             <ul style={{ width: isSignedIn ? "90%" : "80%" }}>
                 <li>
                     <img src={logo} alt="Financy" />
@@ -19,7 +32,7 @@ const Navigation = (props) => {
                         <GoogleOAuth>Logout</GoogleOAuth>
                     </li>
                 )}
-                <li className={classes.ListIcon}>
+                <li className={classes.ListIcon} onClick={() => props.sidebarHandler(true)}>
                     <ion-icon name="list-sharp" size="large"></ion-icon>
                 </li>
             </ul>

@@ -18,7 +18,13 @@ body {
     background-color: #fff;
     color: #111;
 }
-
+main {
+    transition: transform 0.2s ease;
+    -webkit-transition: transform 0.2s ease;
+    -moz-transition: transform 0.2s ease;
+    -ms-transition: transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
+}
 @media only screen and (max-width: 319px) {
     html {
         font-size: 55%;

@@ -6,6 +6,7 @@ export const SIGN_OUT = "SIGN_OUT";
 
 // UI
 export const REQUEST = "REQUEST";
+export const SIDEBAR = "SIDEBAR";
 
 // dashboard
 

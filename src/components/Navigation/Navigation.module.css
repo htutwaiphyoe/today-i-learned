@@ -1,8 +1,12 @@
 .Navigation {
     width: 100%;
-
     position: sticky;
     font-family: "Fredoka One", cursive;
+    transition: transform 0.2s ease;
+    -webkit-transition: transform 0.2s ease;
+    -moz-transition: transform 0.2s ease;
+    -ms-transition: transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
 }
 .Navigation ul {
     width: 80%;

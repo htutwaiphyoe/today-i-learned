@@ -1,0 +1,19 @@
+.Backdrop {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.Show {
+    display: block;
+}
+@media only screen and (min-width: 992px) {
+    .Show {
+        display: none;
+    }
+}

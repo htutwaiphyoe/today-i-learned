@@ -60,11 +60,11 @@ select {
     .Form form {
         width: 90%;
     }
-}
-@media only screen and (max-width: 576px) {
     .Form {
         padding: 1rem;
     }
+}
+@media only screen and (max-width: 576px) {
     .Form form {
         width: 100%;
     }

@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Navigation from "../../components/Navigation/Navigation";
+import SideDrawer from "../../components/SideDrawer/SideDrawer";
+import * as actionCreators from "../../store/actions";
 const Layout = (props) => {
+    const auth = useSelector((state) => state.auth);
+    const sidebar = useSelector((state) => state.ui.sidebar);
+    const dispatch = useDispatch();
+    const sidebarHandler = useCallback(
+        (payload) => {
+            dispatch(actionCreators.sidebar(payload));
+        },
+        [dispatch]
+    );
+    let style = {
+        transform: "translateX(0px)",
+        overflow: "scroll",
+    };
+    if (sidebar) {
+        style = {
+            transform: "translateX(-300px)",
+            overflow: "hidden",
+        };
+    }
+
     return (
         <React.Fragment>
-            <Navigation />
-            <main>{props.children}</main>
+            <Navigation sidebarHandler={sidebarHandler} />
+            {auth.user && (
+                <SideDrawer auth={auth} sidebar={sidebar} sidebarHandler={sidebarHandler} />
+            )}
+            <main style={style}>{props.children}</main>
         </React.Fragment>
     );
 };

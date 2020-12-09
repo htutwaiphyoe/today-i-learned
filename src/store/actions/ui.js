@@ -6,3 +6,10 @@ export const request = (payload) => {
         payload,
     };
 };
+
+export const sidebar = (payload) => {
+    return {
+        type: actionTypes.SIDEBAR,
+        payload,
+    };
+};

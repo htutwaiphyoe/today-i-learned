@@ -15,7 +15,6 @@ const Today = (props) => {
     const totExpense = useSelector((state) => state.dashboard.totexpense);
     const isRequested = useSelector((state) => state.ui.isRequested);
     const dispatch = useDispatch();
-
     useEffect(() => {
         if (user) {
             dispatch(actionCreators.getData(`${user.email}-${new Date().toLocaleDateString()}`));
