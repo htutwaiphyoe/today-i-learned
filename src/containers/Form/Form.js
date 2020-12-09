@@ -32,7 +32,8 @@ const Form = (props) => {
                     info,
                     amount,
                     email: user.email,
-                    date: new Date().toLocaleDateString(),
+                    date: user.email + "-" + new Date().toLocaleDateString(),
+
                 })
             );
         }

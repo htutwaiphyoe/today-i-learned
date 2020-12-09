@@ -18,6 +18,7 @@ const Analysis = (props) => {
     const totExpense = useSelector((state) => state.dashboard.totexpense);
     const isRequested = useSelector((state) => state.ui.isRequested);
     const dispatch = useDispatch();
+
     const getDropDown = (length, startPoint = 0) => {
         let elements = [];
         for (let i = 1; i <= length; i++) {
@@ -31,12 +32,18 @@ const Analysis = (props) => {
     };
     const dayChangeHandler = (e) => {
         setDay(e.target.value);
+        let date = `${month}/${e.target.value}/${year}`;
+        dispatch(actionCreators.getData(user.email, date));
     };
     const monthChangeHandler = (e) => {
         setMonth(e.target.value);
+        let date = `${e.target.value}/${day}/${year}`;
+        dispatch(actionCreators.getData(user.email, date));
     };
     const yearChangeHandler = (e) => {
         setYear(e.target.value);
+        let date = `${month}/${day}/${e.target.value}`;
+        dispatch(actionCreators.getData(user.email, date));
     };
 
     const formatNumber = (amount) => {
@@ -88,7 +95,7 @@ const Analysis = (props) => {
                         {getDropDown(12)}
                     </select>
                     <select onChange={yearChangeHandler} value={year}>
-                        {getDropDown(30, 2019)}
+                        {getDropDown(10, 2010)}
                     </select>
                 </div>
                 <div className={classes.Status}>

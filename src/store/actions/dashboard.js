@@ -33,11 +33,20 @@ export const deleteItem = (type, id, amount) => async (dispatch) => {
         console.log(err);
     }
 };
-export const getData = (email) => async (dispatch) => {
+export const getData = (email, date) => async (dispatch) => {
     try {
+        let orderBy = "email";
+        let equalTo = email;
+        if (date) {
+            orderBy = "date";
+            equalTo = email + "-" + date;
+        }
+        console.log(equalTo);
         dispatch(request(true));
-        const incomeRequest = financy.get(`/income.json?orderBy="email"&equalTo="${email}"`);
-        const expenseRequest = financy.get(`/expense.json?orderBy="email"&equalTo="${email}"`);
+        const incomeRequest = financy.get(`/income.json?orderBy="${orderBy}"&equalTo="${equalTo}"`);
+        const expenseRequest = financy.get(
+            `/expense.json?orderBy="${orderBy}"&equalTo="${equalTo}"`
+        );
         const response = await Promise.all([incomeRequest, expenseRequest]);
         dispatch(
             storeData({
