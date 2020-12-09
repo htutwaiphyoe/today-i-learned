@@ -1,0 +1,34 @@
+/** TotalStatus **/
+.TotalStatusBox {
+    padding: 1.5rem 2.5rem;
+    width: 100%;
+    color: #f7f7f7;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    box-shadow: 0 0.15rem 0.5rem 0 rgba(58, 59, 69, 0.2);
+}
+
+.TotalStatusBox h2 {
+    font-size: 2rem;
+}
+.TotalStatusBox h3 {
+    font-size: 1.6rem;
+}
+.Income {
+    background: #56ab2f;
+    background: -webkit-linear-gradient(to left, #93e035, #56ab2f);
+    background: linear-gradient(to left, #93e035, #56ab2f);
+}
+.Expense {
+    background: #e43a15;
+    background: -webkit-linear-gradient(to left, #e65245, #e43a15);
+    background: linear-gradient(to left, #db6459, #e04523);
+}
+.Networth {
+    background: #673ab7;
+    background: -webkit-linear-gradient(to right, #6c3ddb, #7a5ab3);
+    background: linear-gradient(to right, #764ed3, #8168ac);
+}

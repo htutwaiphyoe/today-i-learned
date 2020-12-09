@@ -5,7 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Dashboard from "../Dashboard/Dashboard";
 import classes from "./Analysis.module.css";
 import * as actionCreators from "../../store/actions";
-import Loader from "../../components/UI/Loader/Loader";
+import { getDropDown } from "../../utils/utils";
+import TableRow from "../../components/TableRow/TableRow";
+import Table from "../../components/Table/Table";
+import TotalStatus from "../../components/TotalStatus/TotalStatus";
 const Analysis = (props) => {
     const date = new Date();
     const [day, setDay] = useState(date.getDate());
@@ -19,123 +22,43 @@ const Analysis = (props) => {
     const isRequested = useSelector((state) => state.ui.isRequested);
     const dispatch = useDispatch();
 
-    const getDropDown = (length, startPoint = 0) => {
-        let elements = [];
-        for (let i = 1; i <= length; i++) {
-            elements.push(
-                <option value={i + startPoint} key={i}>
-                    {i + startPoint}
-                </option>
-            );
-        }
-        return elements;
-    };
     useEffect(() => {
         if (user) dispatch(actionCreators.getData(`${user.email}-${month}/${day}/${year}`));
     }, [dispatch, user, day, month, year]);
-    const dayChangeHandler = (e) => {
-        setDay(e.target.value);
-    };
-    const monthChangeHandler = (e) => {
-        setMonth(e.target.value);
-    };
-    const yearChangeHandler = (e) => {
-        setYear(e.target.value);
+    const selectChangeHandler = (e, setData) => {
+        setData(e.target.value);
     };
 
-    const formatNumber = (amount) => {
-        return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
-    };
-    const deleteRowHandler = (type, id, amount) => {
-        if (id) {
-            dispatch(actionCreators.deleteItem(type, id, amount));
-        }
-    };
-    const getTableRow = (items, type) => {
-        return items.map((item, i) => {
-            let cssClasses = [];
-            if (i % 2 !== 0) {
-                cssClasses.push(classes.light);
-            }
-            return (
-                <tr key={item.id} className={cssClasses.join(" ")}>
-                    <td className={classes.No}>{i + 1}.</td>
-                    <td>{item.info}</td>
-                    <td>$ {formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
-                    <td
-                        className={classes.No}
-                        onClick={() => deleteRowHandler(type, item.id, item.amount)}
-                    >
-                        <ion-icon name="close-circle"></ion-icon>
-                    </td>
-                </tr>
-            );
-        });
-    };
-
-    let incomeData = <p>No income for today</p>;
-    let expenseData = <p>No expense for today</p>;
+    let incomeData = <p>No income available</p>;
+    let expenseData = <p>No expense available</p>;
     if (income && income.length > 0) {
-        incomeData = getTableRow(income, "income");
+        incomeData = <TableRow items={income} type="income" />;
     }
     if (expense && expense.length > 0) {
-        expenseData = getTableRow(expense, "expense");
+        expenseData = <TableRow items={expense} type="expense" />;
     }
     return (
         <Dashboard>
             <article className={classes.Analysis}>
                 <div className={classes.DateBox}>
-                    <select onChange={dayChangeHandler} value={day}>
+                    <select onChange={(e) => selectChangeHandler(e, setDay)} value={day}>
                         {getDropDown(31)}
                     </select>
-                    <select onChange={monthChangeHandler} value={month}>
+                    <select onChange={(e) => selectChangeHandler(e, setMonth)} value={month}>
                         {getDropDown(12)}
                     </select>
-                    <select onChange={yearChangeHandler} value={year}>
+                    <select onChange={(e) => selectChangeHandler(e, setYear)} value={year}>
                         {getDropDown(10, new Date().getFullYear() - 10)}
                     </select>
                 </div>
-                <div className={classes.Status}>
-                    <div className={classes.StatusBox}>
-                        <h2>Income</h2>
-                        <h3>$ {formatNumber(Number.parseFloat(totIncome).toFixed(2))}</h3>
-                    </div>
-                    <div className={classes.StatusBox}>
-                        <h2>Expense</h2>
-                        <h3>$ {formatNumber(Number.parseFloat(totExpense).toFixed(2))}</h3>
-                    </div>
-                    <div className={classes.StatusBox}>
-                        <h2>Networth</h2>
-                        <h3>
-                            $ {formatNumber(Number.parseFloat(totIncome - totExpense).toFixed(2))}
-                        </h3>
-                    </div>
+                <div className={classes.TotalStatus}>
+                    <TotalStatus type="Income" total={totIncome} />
+                    <TotalStatus type="Expense" total={totExpense} />
+                    <TotalStatus type="Networth" total={totIncome - totExpense} />
                 </div>
                 <div className={classes.TableBox}>
-                    <table>
-                        <caption>Income</caption>
-                        <thead>
-                            <tr>
-                                <th className={classes.No}>No.</th>
-                                <th>Inforamtion</th>
-                                <th>Amount</th>
-                                <th className={classes.No}></th>
-                            </tr>
-                        </thead>
-                        <tbody>{isRequested ? <Loader /> : incomeData}</tbody>
-                    </table>
-                    <table>
-                        <caption>Expense</caption>
-                        <thead>
-                            <tr>
-                                <th className={classes.No}>No.</th>
-                                <th>Inforamtion</th>
-                                <th>Amount</th>
-                                <th className={classes.No}></th>
-                            </tr>
-                        </thead>
-                        <tbody>{isRequested ? <Loader /> : expenseData}</tbody>
-                    </table>
+                    <Table caption="Income" isRequested={isRequested} data={incomeData} />
+                    <Table caption="Expense" isRequested={isRequested} data={expenseData} />
                 </div>
             </article>
         </Dashboard>

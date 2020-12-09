@@ -20,3 +20,7 @@ export const getDropDown = (length, startPoint = 0) => {
     }
     return elements;
 };
+
+export const formatNumber = (amount) => {
+    return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
+};

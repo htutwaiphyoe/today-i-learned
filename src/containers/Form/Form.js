@@ -17,23 +17,8 @@ const Form = (props) => {
     const [month, setMonth] = useState(date.getMonth() + 1);
     const [year, setYear] = useState(date.getFullYear());
 
-    const onChangeInfoHandler = (e) => {
-        setInfo(e.target.value);
-    };
-    const onChangeAmountHandler = (e) => {
-        setAmount(e.target.value);
-    };
-    const onChangeTypeHandler = (e) => {
-        setType(e.target.value);
-    };
-    const dayChangeHandler = (e) => {
-        setDay(e.target.value);
-    };
-    const monthChangeHandler = (e) => {
-        setMonth(e.target.value);
-    };
-    const yearChangeHandler = (e) => {
-        setYear(e.target.value);
+    const onChangeHandler = (e, setData) => {
+        setData(e.target.value);
     };
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -43,7 +28,7 @@ const Form = (props) => {
             setType("income");
             dispatch(
                 actionCreators.addNewItem(type, {
-                    info,
+                    info: info.trim(),
                     amount,
                     createdAt: `${user.email}-${month}/${day}/${year}`,
                 })
@@ -63,7 +48,7 @@ const Form = (props) => {
                             name="info"
                             required
                             value={info}
-                            onChange={onChangeInfoHandler}
+                            onChange={(e) => onChangeHandler(e, setInfo)}
                         />
                     </div>
                     <div className={classes.FormElement}>
@@ -74,12 +59,12 @@ const Form = (props) => {
                             name="amount"
                             required
                             value={amount}
-                            onChange={onChangeAmountHandler}
+                            onChange={(e) => onChangeHandler(e, setAmount)}
                         />
                     </div>
                     <div className={classes.FormElement}>
                         <label>Select one...</label>
-                        <select required value={type} onChange={onChangeTypeHandler}>
+                        <select required value={type} onChange={(e) => onChangeHandler(e, setType)}>
                             <option value="income">Income</option>
                             <option value="expense">Expense</option>
                         </select>
@@ -87,13 +72,13 @@ const Form = (props) => {
                     <div className={classes.FormElement}>
                         <label>Select date...</label>
                         <div className={classes.DateBox}>
-                            <select onChange={dayChangeHandler} value={day}>
+                            <select onChange={(e) => onChangeHandler(e, setDay)} value={day}>
                                 {getDropDown(31)}
                             </select>
-                            <select onChange={monthChangeHandler} value={month}>
+                            <select onChange={(e) => onChangeHandler(e, setMonth)} value={month}>
                                 {getDropDown(12)}
                             </select>
-                            <select onChange={yearChangeHandler} value={year}>
+                            <select onChange={(e) => onChangeHandler(e, setYear)} value={year}>
                                 {getDropDown(10, 2010)}
                             </select>
                         </div>
