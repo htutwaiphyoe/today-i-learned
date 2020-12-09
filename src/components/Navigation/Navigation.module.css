@@ -26,6 +26,9 @@
 .Navigation span {
     margin-left: 1rem;
 }
+.Navigation .SignIn {
+    display: block;
+}
 .SignIn button {
     border: 1px solid #6a41ff;
     color: #6a41ff;
@@ -41,8 +44,24 @@
     cursor: pointer;
     outline: none;
 }
+
+.Navigation .ListIcon {
+    display: none;
+    cursor: pointer;
+    color: #6a41ff;
+}
+.Navigation .ListIcon:hover {
+    color: #6a41ff83;
+}
+
 @media only screen and (max-width: 992px) {
     .Navigation ul {
         width: 90%;
+    }
+    .Navigation .ListIcon {
+        display: block;
+    }
+    .Navigation .SignIn {
+        display: none;
     }
 }

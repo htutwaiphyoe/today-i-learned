@@ -55,3 +55,17 @@ select {
 .DateBox select:not(:first-child) {
     margin-left: 0.5rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .Form form {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .Form {
+        padding: 1rem;
+    }
+    .Form form {
+        width: 100%;
+    }
+}

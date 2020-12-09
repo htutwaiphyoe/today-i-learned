@@ -64,3 +64,9 @@
 .ListItem a.active {
     color: #6a41ff;
 }
+
+@media only screen and (max-width: 992px) {
+    .Panel {
+        display: none;
+    }
+}

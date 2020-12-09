@@ -34,7 +34,7 @@ tbody tr {
 }
 
 thead {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
 }
 
 caption {
@@ -50,5 +50,10 @@ th {
     background-color: rgba(0, 0, 0, 0.05);
 }
 .No {
-    width: 5rem;
+    width: 3.5rem;
+}
+@media only screen and (max-width: 576px) {
+    table {
+        font-size: 1.5rem;
+    }
 }

@@ -13,12 +13,15 @@ const Navigation = (props) => {
                     <span>Financy</span>
                 </li>
                 {!isSignedIn ? (
-                    <li>Home</li>
+                    <li className={classes.SignIn}>Home</li>
                 ) : (
                     <li className={classes.SignIn}>
                         <GoogleOAuth>Logout</GoogleOAuth>
                     </li>
                 )}
+                <li className={classes.ListIcon}>
+                    <ion-icon name="list-sharp" size="large"></ion-icon>
+                </li>
             </ul>
         </nav>
     );
