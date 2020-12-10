@@ -8,5 +8,6 @@
 @media only screen and (max-width: 992px) {
     .Dashboard {
         grid-template-columns: 1fr;
+        height: auto;
     }
 }

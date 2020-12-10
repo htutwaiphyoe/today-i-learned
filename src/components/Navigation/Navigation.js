@@ -10,11 +10,13 @@ const Navigation = (props) => {
     let style = {
         transform: "translateX(0px)",
         height: isSignedIn ? "7rem" : "9rem",
+        boxShadow: isSignedIn ? "0 0.15rem 0.5rem 0 rgba(58, 59, 69, 0.2)" : "none",
     };
     if (sidebar) {
         style = {
             transform: "translateX(-300px)",
-            overflow: "hidden",
+            boxShadow: "0 0.15rem 0.5rem 0 rgba(58, 59, 69, 0.2)",
+            // overflow: "hidden",
             height: isSignedIn ? "7rem" : "9rem",
         };
     }
