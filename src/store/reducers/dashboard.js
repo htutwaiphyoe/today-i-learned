@@ -26,7 +26,6 @@ const storeData = (state, action) => {
         }
         return total;
     };
-
     return updateObj(state, {
         income: action.payload.income,
         expense: action.payload.expense,
@@ -44,7 +43,6 @@ const clearData = () => {
     };
 };
 const deleteItem = (state, action) => {
-    console.log(action);
     const updatedData = [...state[action.payload.type]];
     return updateObj(state, {
         [action.payload.type]: updatedData.filter((item) => item.id !== action.payload.id),

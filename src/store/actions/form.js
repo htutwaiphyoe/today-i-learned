@@ -12,7 +12,6 @@ export const addNewItem = (type, data) => async (dispatch) => {
         dispatch(request(true));
         const response = await financy.post(`/${type}.json`, data);
         dispatch(request(false));
-        console.log(response);
         dispatch(
             storeNewItem({
                 type,

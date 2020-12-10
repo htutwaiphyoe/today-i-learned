@@ -3,7 +3,6 @@ import { request } from "./ui";
 import financy from "../../api/financy";
 
 const storeData = (payload) => {
-    console.log(payload);
     return {
         type: actionTypes.STORE_DATA,
         payload,

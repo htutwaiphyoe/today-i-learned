@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import classes from "./Today.module.css";
@@ -8,6 +8,7 @@ import TableRow from "../../components/TableRow/TableRow";
 import Table from "../../components/Table/Table";
 import TotalStatus from "../../components/TotalStatus/TotalStatus";
 const Today = (props) => {
+    const date = useMemo(() => new Date(), []);
     const user = useSelector((state) => state.auth.user);
     const income = useSelector((state) => state.dashboard.income);
     const expense = useSelector((state) => state.dashboard.expense);
@@ -15,11 +16,16 @@ const Today = (props) => {
     const totExpense = useSelector((state) => state.dashboard.totexpense);
     const isRequested = useSelector((state) => state.ui.isRequested);
     const dispatch = useDispatch();
+
     useEffect(() => {
         if (user) {
-            dispatch(actionCreators.getData(`${user.email}-${new Date().toLocaleDateString()}`));
+            dispatch(
+                actionCreators.getData(
+                    `${user.email}-${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                )
+            );
         }
-    }, [dispatch, user]);
+    }, [dispatch, user, date]);
 
     let incomeData = <p>No income for today</p>;
     let expenseData = <p>No expense for today</p>;

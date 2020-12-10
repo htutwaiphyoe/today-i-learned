@@ -15,7 +15,6 @@ const Layout = (props) => {
     );
     let style = {
         transform: "translateX(0px)",
-        overflow: "scroll",
     };
     if (sidebar) {
         style = {

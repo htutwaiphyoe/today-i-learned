@@ -23,7 +23,7 @@ const Analysis = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (user) dispatch(actionCreators.getData(`${user.email}-${month}/${day}/${year}`));
+        if (user) dispatch(actionCreators.getData(`${user.email}-${day}/${month}/${year}`));
     }, [dispatch, user, day, month, year]);
     const selectChangeHandler = (e, setData) => {
         setData(e.target.value);

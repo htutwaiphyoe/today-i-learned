@@ -29,7 +29,7 @@ const Form = (props) => {
                 actionCreators.addNewItem(type, {
                     info: info.trim(),
                     amount,
-                    createdAt: `${user.email}-${month}/${day}/${year}`,
+                    createdAt: `${user.email}-${day}/${month}/${year}`,
                 })
             );
         }
