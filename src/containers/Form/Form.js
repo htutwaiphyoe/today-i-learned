@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import classes from "./Form.module.css";
 import Dashboard from "../Dashboard/Dashboard";
 import * as actionCreators from "../../store/actions";
-import { getDropDown } from "../../utils/utils";
+import { getDropDown, getDays, getMonths } from "../../utils/utils";
 const Form = (props) => {
     const date = new Date();
     const dispatch = useDispatch();
@@ -72,13 +72,13 @@ const Form = (props) => {
                         <label>Select date...</label>
                         <div className={classes.DateBox}>
                             <select onChange={(e) => onChangeHandler(e, setDay)} value={day}>
-                                {getDropDown(31)}
+                                {getDropDown(getDays(+year, +month, date))}
                             </select>
                             <select onChange={(e) => onChangeHandler(e, setMonth)} value={month}>
-                                {getDropDown(12)}
+                                {getDropDown(getMonths(+year, date))}
                             </select>
                             <select onChange={(e) => onChangeHandler(e, setYear)} value={year}>
-                                {getDropDown(10, 2010)}
+                                {getDropDown(11, new Date().getFullYear() - 11)}
                             </select>
                         </div>
                     </div>

@@ -24,6 +24,36 @@ main {
     -moz-transition: transform 0.2s ease;
     -ms-transition: transform 0.2s ease;
     -o-transition: transform 0.2s ease;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+}
+.Slide {
+    transform: translateX(-30rem) !important;
+    -webkit-transform: translateX(-30rem) !important;
+    -moz-transform: translateX(-30rem) !important;
+    -ms-transform: translateX(-30rem) !important;
+    -o-transform: translateX(-30rem) !important;
+}
+@media only screen and (min-width: 993px) {
+    .Slide {
+        transform: translateX(0) !important;
+        -webkit-transform: translateX(0) !important;
+        -moz-transform: translateX(0) !important;
+        -ms-transform: translateX(0) !important;
+        -o-transform: translateX(0) !important;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .Slide {
+        transform: translateX(-75%) !important;
+        -webkit-transform: translateX(-75%) !important;
+        -moz-transform: translateX(-75%) !important;
+        -ms-transform: translateX(-75%) !important;
+        -o-transform: translateX(-75%) !important;
+    }
 }
 @media only screen and (max-width: 319px) {
     html {

@@ -13,14 +13,9 @@ const Layout = (props) => {
         },
         [dispatch]
     );
-    let style = {
-        transform: "translateX(0px)",
-    };
+    let layoutClasses = [];
     if (sidebar) {
-        style = {
-            transform: "translateX(-300px)",
-            overflow: "hidden",
-        };
+        layoutClasses.push("Slide");
     }
 
     return (
@@ -29,7 +24,7 @@ const Layout = (props) => {
             {auth.user && (
                 <SideDrawer auth={auth} sidebar={sidebar} sidebarHandler={sidebarHandler} />
             )}
-            <main style={style}>{props.children}</main>
+            <main className={layoutClasses.join(" ")}>{props.children}</main>
         </React.Fragment>
     );
 };

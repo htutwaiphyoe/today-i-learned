@@ -24,3 +24,22 @@ export const getDropDown = (length, startPoint = 0) => {
 export const formatNumber = (amount) => {
     return parseInt(amount.split(".")[0]).toLocaleString() + "." + amount.split(".")[1];
 };
+
+export const getDays = (year, month, date) => {
+    let feb = year % 4 === 0 ? 29 : 28;
+    let daysInMonth = [31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if (year === date.getFullYear()) {
+        if (month === date.getMonth() + 1) {
+            return date.getDate();
+        }
+        return daysInMonth[month - 1];
+    }
+    return daysInMonth[month - 1];
+};
+
+export const getMonths = (year, date) => {
+    if (year === date.getFullYear()) {
+        return date.getMonth() + 1;
+    }
+    return 12;
+};

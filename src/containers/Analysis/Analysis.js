@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Dashboard from "../Dashboard/Dashboard";
 import classes from "./Analysis.module.css";
 import * as actionCreators from "../../store/actions";
-import { getDropDown } from "../../utils/utils";
+import { getDropDown, getDays, getMonths } from "../../utils/utils";
 import TableRow from "../../components/TableRow/TableRow";
 import Table from "../../components/Table/Table";
 import TotalStatus from "../../components/TotalStatus/TotalStatus";
@@ -37,18 +37,19 @@ const Analysis = (props) => {
     if (expense && expense.length > 0) {
         expenseData = <TableRow items={expense} type="expense" />;
     }
+
     return (
         <Dashboard>
             <article className={classes.Analysis}>
                 <div className={classes.DateBox}>
                     <select onChange={(e) => selectChangeHandler(e, setDay)} value={day}>
-                        {getDropDown(31)}
+                        {getDropDown(getDays(+year, +month, date))}
                     </select>
                     <select onChange={(e) => selectChangeHandler(e, setMonth)} value={month}>
-                        {getDropDown(12)}
+                        {getDropDown(getMonths(+year, date))}
                     </select>
                     <select onChange={(e) => selectChangeHandler(e, setYear)} value={year}>
-                        {getDropDown(10, new Date().getFullYear() - 10)}
+                        {getDropDown(11, new Date().getFullYear() - 11)}
                     </select>
                 </div>
                 <div className={classes.TotalStatus}>

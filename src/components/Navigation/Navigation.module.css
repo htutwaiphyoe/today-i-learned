@@ -11,6 +11,11 @@
     -ms-transition: transform 0.2s ease;
     -o-transition: transform 0.2s ease;
     top: 0;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
 }
 .Navigation ul {
     width: 80%;

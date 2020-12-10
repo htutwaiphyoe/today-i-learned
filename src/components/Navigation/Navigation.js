@@ -8,20 +8,21 @@ const Navigation = (props) => {
     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
     const sidebar = useSelector((state) => state.ui.sidebar);
     let style = {
-        transform: "translateX(0px)",
         height: isSignedIn ? "7rem" : "9rem",
         boxShadow: isSignedIn ? "0 0.15rem 0.5rem 0 rgba(58, 59, 69, 0.2)" : "none",
     };
+    let navClasses = [classes.Navigation];
+
     if (sidebar) {
         style = {
-            transform: "translateX(-300px)",
             boxShadow: "0 0.15rem 0.5rem 0 rgba(58, 59, 69, 0.2)",
             // overflow: "hidden",
             height: isSignedIn ? "7rem" : "9rem",
         };
+        navClasses.push("Slide");
     }
     return (
-        <nav className={classes.Navigation} style={style}>
+        <nav className={navClasses.join(" ")} style={style}>
             <ul style={{ width: isSignedIn ? "90%" : "80%" }}>
                 <li>
                     <img src={logo} alt="Financy" />
