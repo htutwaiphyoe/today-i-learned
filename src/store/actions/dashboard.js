@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { request } from "./ui";
+import { request, error } from "./ui";
 import financy from "../../api/financy";
 
 const storeData = (payload) => {
@@ -29,7 +29,7 @@ export const deleteItem = (type, id, amount) => async (dispatch) => {
         dispatch({ type: actionTypes.DELETE_ITEM, payload: { type, id, amount } });
         dispatch(request(false));
     } catch (err) {
-        console.log(err);
+        dispatch(error(err));
     }
 };
 export const getData = (query) => async (dispatch) => {
@@ -49,7 +49,7 @@ export const getData = (query) => async (dispatch) => {
             })
         );
         dispatch(request(false));
-    } catch (e) {
-        console.log(e);
+    } catch (err) {
+        dispatch(error(err));
     }
 };

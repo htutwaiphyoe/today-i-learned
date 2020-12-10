@@ -3,6 +3,7 @@ import { updateObj } from "../../utils/utils";
 const initialState = {
     isRequested: false,
     sidebar: false,
+    error: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,8 @@ const reducer = (state = initialState, action) => {
             return updateObj(state, { isRequested: action.payload });
         case actionTypes.SIDEBAR:
             return updateObj(state, { sidebar: action.payload });
+        case actionTypes.ERROR:
+            return updateObj(state, { error: action.payload, sidebar: false, isRequested: false });
         default:
             return state;
     }

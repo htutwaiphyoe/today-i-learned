@@ -13,3 +13,10 @@ export const sidebar = (payload) => {
         payload,
     };
 };
+
+export const error = (payload) => {
+    return {
+        type: actionTypes.ERROR,
+        payload,
+    };
+};

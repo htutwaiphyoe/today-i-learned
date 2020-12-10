@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { request } from "./ui";
+import { request, error } from "./ui";
 import financy from "../../api/financy";
 const storeNewItem = (payload) => {
     return {
@@ -22,6 +22,6 @@ export const addNewItem = (type, data) => async (dispatch) => {
             })
         );
     } catch (err) {
-        console.log(err);
+        dispatch(error(err));
     }
 };

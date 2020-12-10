@@ -39,15 +39,20 @@ const GoogleOAuth = (props) => {
                     auth.isSignedIn.listen(() => {
                         setAuthState(auth.isSignedIn.get());
                     });
-                });
+                })
+                .catch((err) => dispatch(actionCreators.error(err)));
         });
-    }, [setAuthState]);
+    }, [setAuthState, dispatch]);
     const onClickHandler = () => {
-        if (isSignedIn) {
-            auth.signOut();
-        } else {
-            auth.signIn();
-            props.history.replace("/");
+        try {
+            if (isSignedIn) {
+                auth.signOut();
+            } else {
+                auth.signIn();
+                props.history.replace("/");
+            }
+        } catch (err) {
+            dispatch(actionCreators.error(err));
         }
     };
     return <button onClick={onClickHandler}>{props.children}</button>;

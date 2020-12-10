@@ -1,0 +1,13 @@
+.MessageBox {
+    width: 100%;
+    height: calc(90vh - 9rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f1f1f1;
+}
+.MessageBox p {
+    font-size: 1.7rem;
+    color: #6a41ff;
+}

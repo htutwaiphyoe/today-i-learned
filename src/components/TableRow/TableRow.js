@@ -19,7 +19,7 @@ const TableRow = (props) => {
             <tr key={item.id} className={cssClasses.join(" ")}>
                 <td className={classes.No}>{i + 1}.</td>
                 <td>{item.info}</td>
-                <td>$ {formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
+                <td>{formatNumber(Number.parseFloat(item.amount).toFixed(2))}</td>
                 <td
                     className={classes.No}
                     onClick={() => deleteRowHandler(props.type, item.id, item.amount)}
