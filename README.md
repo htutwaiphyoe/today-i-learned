@@ -1,3 +1,0 @@
-# Financy - Budget Planner
-
-## Technologies
