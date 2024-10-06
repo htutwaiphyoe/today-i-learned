@@ -19,3 +19,11 @@ CertyIQ for dump
 Date between dates moment => moment().isBetween(moment-like, moment-like)
 
 <https://stackoverflow.com/questions/14897571/moment-js-date-between-dates>
+
+## 7.10.2024
+
+<https://github.com/alex/what-happens-when>
+
+[https://stackoverflow.com/questions/41063361/what-is-the-double-left-arrow-syntax-in-yaml-called-and-wheres-it-specifi](https://stackoverflow.com/questions/41063361/what-is-the-double-left-arrow-syntax-in-yaml-called-and-wheres-it-specifi)
+
+[naming-conventions-for-git-branches](https://medium.com/@abhay.pixolo/naming-conventions-for-git-branches-a-cheatsheet-8549feca2534)
