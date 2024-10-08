@@ -31,3 +31,12 @@ Date between dates moment => moment().isBetween(moment-like, moment-like)
 ## 8.10.2024
 
 [radio w3](https://www.w3.org/TR/2017/WD-wai-aria-practices-1.1-20170628/examples/radio/radio-1/radio-1.html)
+
+## 9.10.2024
+
+- Create S3 bucket to upload trifecta code with github actions CI/CD using AWS access key and secret key
+- Enable Static website hosting in s3
+- Create CloudFront distribution and link with s3 bucket policy
+- Point Alternative domain to CloudFront Distribution in Route 53
+
+[typescript-based-sdk](https://dev.to/jamesoyanna/developing-and-publishing-a-typescript-based-sdk-3pph)
