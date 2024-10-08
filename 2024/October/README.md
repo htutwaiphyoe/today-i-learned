@@ -40,3 +40,30 @@ Date between dates moment => moment().isBetween(moment-like, moment-like)
 - Point Alternative domain to CloudFront Distribution in Route 53
 
 [typescript-based-sdk](https://dev.to/jamesoyanna/developing-and-publishing-a-typescript-based-sdk-3pph)
+
+## 10.10.2024
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "1",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::staging-bp/*"
+        },
+        {
+            "Sid": "2",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E1YNW4JZ9YAJ7E"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::staging-bp/*"
+        }
+    ]
+}
+
+- create amplify and link custom domain dns (auto-generated cloudfront url) in route 53
+- use cloudfront url in rewrite and redirect for custom redirect
