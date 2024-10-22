@@ -73,3 +73,9 @@ rm -r ~/Library/Developer/CoreSimulator/Caches
 [accessibility](https://css4u.gitbook.io/accessibility)
 
 [a11ycalendar](http://a11ycalendar.kaseybon.com/perceivable-1-1.html)
+
+[GSAP-Parallax-Effect](https://github.com/joeunhye/GSAP-Parallax-Effect)
+
+[dashed-border-generator](https://kovart.github.io/dashed-border-generator/)
+
+[sourcegit](https://sourcegit-scm.github.io/)
