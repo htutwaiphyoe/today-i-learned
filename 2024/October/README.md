@@ -79,3 +79,13 @@ rm -r ~/Library/Developer/CoreSimulator/Caches
 [dashed-border-generator](https://kovart.github.io/dashed-border-generator/)
 
 [sourcegit](https://sourcegit-scm.github.io/)
+
+[qr-login](https://github.com/kyawzaymoore/qr-login)
+
+[CSS Units Best Practices](https://gist.github.com/basham/2175a16ab7c60ce8e001)
+
+[media-query-units](https://zellwk.com/blog/media-query-units/)
+
+[tailwindcss-motion](https://github.com/romboHQ/tailwindcss-motion)
+
+make list as scrollable with max height, put the CTAs below the list

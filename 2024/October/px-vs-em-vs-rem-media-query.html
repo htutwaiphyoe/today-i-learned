@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .pixel {
+        width: 100%;
+        height: 200px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .pixel > div {
+        background: red;
+      }
+      .rem {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        height: 200px;
+      }
+      .rem > div {
+        background: blue;
+      }
+      .em {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 100%;
+        height: 200px;
+      }
+      .em > div {
+        background: green;
+      }
+
+      @media (min-width: 400px) {
+        .pixel {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 25rem) {
+        .rem {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 25em) {
+        .em {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pixel">
+      <div>Pixel</div>
+      <div>Pixel</div>
+    </div>
+    <div class="rem">
+      <div>Rem</div>
+      <div>Rem</div>
+    </div>
+    <div class="em">
+      <div>Em</div>
+      <div>Em</div>
+    </div>
+    <p style="font-size: 16px">Pixel</p>
+    <p style="font-size: 1rem">Rem</p>
+    <p style="font-size: 1em">Em</p>
+  </body>
+</html>
