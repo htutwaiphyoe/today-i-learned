@@ -89,3 +89,7 @@ rm -r ~/Library/Developer/CoreSimulator/Caches
 [tailwindcss-motion](https://github.com/romboHQ/tailwindcss-motion)
 
 make list as scrollable with max height, put the CTAs below the list
+
+[vaul drawer](https://github.com/emilkowalski/vaul)
+
+[exploringjs](https://exploringjs.com/js/book/index.html)
