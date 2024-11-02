@@ -93,3 +93,9 @@ make list as scrollable with max height, put the CTAs below the list
 [vaul drawer](https://github.com/emilkowalski/vaul)
 
 [exploringjs](https://exploringjs.com/js/book/index.html)
+
+[react-tiny-popover](https://github.com/alexkatz/react-tiny-popover)
+
+```css
+color: rgb(from var(--red-hex) r g b / var(--color-opacity));
+```
