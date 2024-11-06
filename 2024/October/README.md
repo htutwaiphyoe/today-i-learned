@@ -99,3 +99,11 @@ make list as scrollable with max height, put the CTAs below the list
 ```css
 color: rgb(from var(--red-hex) r g b / var(--color-opacity));
 ```
+
+[how-i-think-about-salary](https://feifan.blog/posts/how-i-think-about-salary)
+
+[headless-boneless-and-skinless-ui](https://nerdy.dev/headless-boneless-and-skinless-ui)
+
+[nuqs](https://github.com/47ng/nuqs)
+
+[music-player](https://github.com/CodeWithGionatha-Labs/music-player)
