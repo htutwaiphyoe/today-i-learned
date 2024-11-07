@@ -107,3 +107,5 @@ color: rgb(from var(--red-hex) r g b / var(--color-opacity));
 [nuqs](https://github.com/47ng/nuqs)
 
 [music-player](https://github.com/CodeWithGionatha-Labs/music-player)
+
+[usescreendetector](https://medium.com/@vigneshun/building-a-responsive-react-hook-usescreendetector-a2c554ee5b2)
