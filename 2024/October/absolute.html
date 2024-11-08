@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 20rem 1fr;
+      }
+      .sidebar {
+        background-color: red;
+      }
+      .main {
+        background-color: blue;
+      }
+      .header {
+        position: relative;
+      }
+      .input {
+        width: 100%;
+      }
+      .popover {
+        width: 40rem;
+        background-color: white;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      }
+      .list {
+        width: 100%;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="header">
+          <input class="input" />
+          <div class="popover">
+            <ul class="list">
+              <li class="item">1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>6</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main">q</div>
+    </div>
+  </body>
+</html>

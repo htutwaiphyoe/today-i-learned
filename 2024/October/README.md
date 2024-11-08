@@ -109,3 +109,23 @@ color: rgb(from var(--red-hex) r g b / var(--color-opacity));
 [music-player](https://github.com/CodeWithGionatha-Labs/music-player)
 
 [usescreendetector](https://medium.com/@vigneshun/building-a-responsive-react-hook-usescreendetector-a2c554ee5b2)
+
+[tailwindcss-intelligence-custom-utility-classname](https://www.summerbud.org/dev-notes/tailwindcss-intelligence-custom-utility-classname)
+
+```js
+ plugins: [
+    ({ addUtilities }) => {
+      addUtilities({
+        ".screen": {
+          "@apply flex-1 bg-black": {},
+        },
+      });
+    },
+  ],
+```
+
+[rpc-failed-http-400-curl-22-the-requested-url-returned-error-400-bad-request](https://stackoverflow.com/questions/62753648/rpc-failed-http-400-curl-22-the-requested-url-returned-error-400-bad-request)
+
+```bash
+git config http.postBuffer 524288000
+```
