@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 20rem 1fr;
+        overflow: hidden;
+      }
+      .sidebar {
+        background-color: red;
+        max-height: 100vh;
+        height: 100vh;
+        position: relative;
+        z-index: 50;
+        overflow-y: scroll;
+        box-sizing: border-box;
+        clip-path: inset(0 0 0 0);
+      }
+      .header {
+        position: relative;
+        width: 40rem;
+        z-index: 100;
+      }
+      .input {
+        width: 100%;
+      }
+      .popover {
+        width: 40rem;
+        height: 20rem;
+        background-color: white;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        position: absolute;
+        z-index: 200;
+        top: 2rem;
+        left: 2rem;
+        transform: translate3d(238px, 80px, 0);
+      }
+      .list {
+        width: 100%;
+        background-color: white;
+      }
+      .main {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div>
+          <ul class="list">
+            <li class="item">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>6</li>
+          </ul>
+          <ul class="list">
+            <li class="item">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>6</li>
+          </ul>
+          <ul class="list">
+            <li class="item">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>6</li>
+          </ul>
+          <ul class="list">
+            <li class="item">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>6</li>
+          </ul>
+          <ul class="list">
+            <li class="item">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>6</li>
+          </ul>
+        </div>
+        <div class="header">
+          <input class="input" />
+          <div class="popover">
+            <ul class="list">
+              <li class="item">1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>6</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main"></div>
+    </div>
+  </body>
+</html>
