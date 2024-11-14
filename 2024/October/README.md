@@ -129,3 +129,5 @@ color: rgb(from var(--red-hex) r g b / var(--color-opacity));
 ```bash
 git config http.postBuffer 524288000
 ```
+
+[transitioning-to-height-auto](https://keithjgrant.com/posts/2023/04/transitioning-to-height-auto/)
